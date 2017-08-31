@@ -1,0 +1,22 @@
+h1 = "#{@event.name} Guest List"
+
+= link_to 'Add New Guest', new_event_guest_path(@event)
+
+h2 Current Guest List
+- if @event.invites.any?
+  table
+    - @event.invites.each do |invite|
+      tr
+        td = invite.guest.full_name
+        td = link_to 'Remove from Guest List', event_invite_path(@event, invite), method: :delete
+
+
+h2 Previous Guests not Currently Invited
+- if @not_invited.any?
+  table
+    - @not_invited.each do |potential_guest|
+      tr
+        td = potential_guest.full_name
+        td = link_to 'Add to Guest List', add_event_guest_path(@event, potential_guest), method: :post
+
+= button_to 'Send Invites', send_messages_messages_path, method: :post, params: {event_id: @event.id}
