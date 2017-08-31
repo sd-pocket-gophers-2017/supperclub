@@ -25,3 +25,5 @@ p
   = " #{@event.date_time.strftime("%-I:%M %p")}"
   br
   = link_to 'Delete', event_path(@event), method: :delete
+
+iframe width='600' height='450' frameborder='0' src="https://www.google.com/maps/embed/v1/place?key=#{ENV['MAPS_KEY']}&q=#{URI.encode(@event.location)}"
