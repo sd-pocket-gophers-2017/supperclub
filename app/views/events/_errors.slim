@@ -1,0 +1,9 @@
+- if @event.errors.any?
+  div
+    | The form has
+    = "#{@event.errors.count}"
+    | error(s)
+  ul
+    - @event.errors.full_messages.each do |msg|
+      li
+        = "#{msg}"

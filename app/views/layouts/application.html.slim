@@ -7,4 +7,14 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    == yield
+    header
+      ul
+        - if person_signed_in?
+          li = link_to 'Events', events_path
+          li = link_to 'Logout', destroy_person_session_path, method: :delete
+        - else
+          li = link_to 'Register', new_person_registration_path
+          li = link_to 'Login', new_person_session_path
+
+    main
+      == yield

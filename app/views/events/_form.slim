@@ -1,0 +1,17 @@
+div
+  | Event Name:
+  = f.text_field :name
+  br
+  | Description:
+  = f.text_area :description
+  br
+  | Location:
+  = f.text_field :location
+  br
+  | Start Date:
+  = f.date_select :date_time
+  br
+  | Start Time:
+  = f.time_select :date_time, :ignore_date => true
+
+  = f.submit "Create"
