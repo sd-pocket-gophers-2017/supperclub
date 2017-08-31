@@ -149,3 +149,317 @@ Unpermitted parameters: :first_name, :last_name, :phone
 Completed 200 OK in 242ms (Views: 29.2ms | ActiveRecord: 1.3ms)
 
 
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" CASCADE[0m
+  [1m[35m (57.7ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "name" character varying, "description" text, "date_time" timestamp, "location" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "admin_id" integer)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "people" CASCADE[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "people" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "type" character varying NOT NULL, "last_name" character varying NOT NULL, "first_name" character varying NOT NULL, "phone" character varying NOT NULL)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_people_on_email" ON "people"  ("email")[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_people_on_reset_password_token" ON "people"  ("reset_password_token")[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170831042249)[0m
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170830192236),
+(20170830225705),
+(20170831000834),
+(20170831030625);
+
+[0m
+  [1m[35m (20.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (21.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-08-31 13:38:45.674006"], ["updated_at", "2017-08-31 13:38:45.674006"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (11.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" CASCADE[0m
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "name" character varying, "description" text, "date_time" timestamp, "location" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "admin_id" integer)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "people" CASCADE[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "people" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "type" character varying NOT NULL, "last_name" character varying NOT NULL, "first_name" character varying NOT NULL, "phone" character varying NOT NULL)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_people_on_email" ON "people"  ("email")[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_people_on_reset_password_token" ON "people"  ("reset_password_token")[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170831042249)[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170830192236),
+(20170830225705),
+(20170831000834),
+(20170831030625);
+
+[0m
+  [1m[35m (19.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-08-31 13:38:45.861781"], ["updated_at", "2017-08-31 13:38:45.861781"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2017-08-31 06:42:58 -0700
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EventsController#index as HTML
+  Rendering events/index.slim within layouts/application
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.slim within layouts/application (36.7ms)
+Completed 200 OK in 579ms (Views: 528.7ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2017-08-31 06:42:59 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/admin/sign_up" for 127.0.0.1 at 2017-08-31 06:43:09 -0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.slim within layouts/application
+  Rendered devise/shared/_links.html.slim (4.8ms)
+  Rendered devise/registrations/new.html.slim within layouts/application (189.2ms)
+Completed 200 OK in 320ms (Views: 215.3ms | ActiveRecord: 67.5ms)
+
+
+Started POST "/admin" for 127.0.0.1 at 2017-08-31 06:44:03 -0700
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pTfvQJJY6fIPRdm/4RbiUvB99zO/9ylQDjHAdn0TmU71+HXun5bwytmttlPGUVr9hdiT8ciTSLClqsjLow4gtg==", "admin"=>{"first_name"=>"First", "last_name"=>"Last", "phone"=>"(123)123-1234", "email"=>"email@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameters: :first_name, :last_name, :phone
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPerson Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "people" WHERE "people"."phone" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mAdmin Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "people" WHERE "people"."type" IN ('Admin') AND "people"."email" = $1 LIMIT $2[0m  [["email", "email@email.com"], ["LIMIT", 1]]
+  [1m[35m (10.9ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.slim within layouts/application
+  Rendered devise/shared/_links.html.slim (3.9ms)
+  Rendered devise/registrations/new.html.slim within layouts/application (17.1ms)
+Completed 200 OK in 361ms (Views: 40.4ms | ActiveRecord: 12.3ms)
+
+
+Started POST "/admin" for 127.0.0.1 at 2017-08-31 10:01:47 -0700
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pTfvQJJY6fIPRdm/4RbiUvB99zO/9ylQDjHAdn0TmU71+HXun5bwytmttlPGUVr9hdiT8ciTSLClqsjLow4gtg==", "admin"=>{"first_name"=>"First", "last_name"=>"Last", "phone"=>"(123)123-1234", "email"=>"email@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPerson Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "people" WHERE "people"."phone" = $1 LIMIT $2[0m  [["phone", "(123)123-1234"], ["LIMIT", 1]]
+  [1m[36mAdmin Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "people" WHERE "people"."type" IN ('Admin') AND "people"."email" = $1 LIMIT $2[0m  [["email", "email@email.com"], ["LIMIT", 1]]
+  [1m[35mSQL (12.1ms)[0m  [1m[32mINSERT INTO "people" ("email", "encrypted_password", "created_at", "updated_at", "type", "last_name", "first_name", "phone") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "email@email.com"], ["encrypted_password", "$2a$11$tmyr2S3WqDsYmoveD0.bpeiaK8abDWtqnj2bq.SWb77KIAy0fqCsm"], ["created_at", "2017-08-31 17:01:48.376280"], ["updated_at", "2017-08-31 17:01:48.376280"], ["type", "Admin"], ["last_name", "Last"], ["first_name", "First"], ["phone", "(123)123-1234"]]
+  [1m[35m (27.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (50.4ms)[0m  [1m[33mUPDATE "people" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "people"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2017-08-31 17:01:48.418949"], ["last_sign_in_at", "2017-08-31 17:01:48.418949"], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["updated_at", "2017-08-31 17:01:48.419866"], ["id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 329ms (ActiveRecord: 96.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-31 10:01:48 -0700
+Processing by EventsController#index as HTML
+  Rendering events/index.slim within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.slim within layouts/application (7.1ms)
+  [1m[36mAdmin Load (1.0ms)[0m  [1m[34mSELECT  "people".* FROM "people" WHERE "people"."type" IN ('Admin') AND "people"."id" = $1 ORDER BY "people"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 138ms (Views: 104.4ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2017-08-31 10:01:53 -0700
+Processing by EventsController#index as HTML
+  Rendering events/index.slim within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.slim within layouts/application (4.3ms)
+  [1m[36mAdmin Load (0.6ms)[0m  [1m[34mSELECT  "people".* FROM "people" WHERE "people"."type" IN ('Admin') AND "people"."id" = $1 ORDER BY "people"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 29ms (Views: 26.0ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/admin/sign_out" for 127.0.0.1 at 2017-08-31 10:02:08 -0700
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"XyK7RX0K3oRkG5oCFodfSFehKTJBZ14b1pBSWiPdc9sP7SHrcMTHvLLz9e4xwOfnIgRN8DYDP/t9C1rn/cDKIw=="}
+  [1m[36mAdmin Load (0.4ms)[0m  [1m[34mSELECT  "people".* FROM "people" WHERE "people"."type" IN ('Admin') AND "people"."id" = $1 ORDER BY "people"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 73ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-31 10:02:08 -0700
+Processing by EventsController#index as HTML
+  Rendering events/index.slim within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.slim within layouts/application (4.5ms)
+Completed 200 OK in 28ms (Views: 25.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admin/sign_up" for 127.0.0.1 at 2017-08-31 10:02:09 -0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.slim within layouts/application
+  Rendered devise/shared/_links.html.slim (5.3ms)
+  Rendered devise/registrations/new.html.slim within layouts/application (43.9ms)
+Completed 200 OK in 70ms (Views: 68.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admin" for 127.0.0.1 at 2017-08-31 10:02:54 -0700
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eks2Ck/+fuTrAib6liHOTqD0+vcNHSITCApZI76IKE7iJm1zKtAfkDdEbibuhMULJD1E8A04MwpC+XpILs+zCA==", "admin"=>{"first_name"=>"first ", "last_name"=>"last", "phone"=>"(111)111-1111", "email"=>"email@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPerson Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "people" WHERE "people"."phone" = $1 LIMIT $2[0m  [["phone", "(111)111-1111"], ["LIMIT", 1]]
+  [1m[36mAdmin Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "people" WHERE "people"."type" IN ('Admin') AND "people"."email" = $1 LIMIT $2[0m  [["email", "email@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.slim within layouts/application
+  Rendered devise/shared/_links.html.slim (4.8ms)
+  Rendered devise/registrations/new.html.slim within layouts/application (15.8ms)
+Completed 200 OK in 208ms (Views: 40.9ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/admin" for 127.0.0.1 at 2017-08-31 10:03:21 -0700
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kRZyXciwDYWdOYStyYdv3mx2D+oj5qNWbS8qxvTKp0EJeykkrZ5s8UF/zHGxImSb6L+x7SPDsk8n3AmtZI08Bw==", "admin"=>{"first_name"=>"first ", "last_name"=>"last", "phone"=>"(111)111-1111", "email"=>"eemail@email.come", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPerson Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "people" WHERE "people"."phone" = $1 LIMIT $2[0m  [["phone", "(111)111-1111"], ["LIMIT", 1]]
+  [1m[36mAdmin Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "people" WHERE "people"."type" IN ('Admin') AND "people"."email" = $1 LIMIT $2[0m  [["email", "eemail@email.come"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "people" ("email", "encrypted_password", "created_at", "updated_at", "type", "last_name", "first_name", "phone") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "eemail@email.come"], ["encrypted_password", "$2a$11$PmuW3SFfjF3uDZcxmuv42uve51PpET/iXRY8BBJr31wopfSBg47Pm"], ["created_at", "2017-08-31 17:03:21.401199"], ["updated_at", "2017-08-31 17:03:21.401199"], ["type", "Admin"], ["last_name", "last"], ["first_name", "first "], ["phone", "(111)111-1111"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "people" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "people"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2017-08-31 17:03:21.404590"], ["last_sign_in_at", "2017-08-31 17:03:21.404590"], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["updated_at", "2017-08-31 17:03:21.405200"], ["id", 2]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 168ms (ActiveRecord: 3.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-31 10:03:21 -0700
+Processing by EventsController#index as HTML
+  Rendering events/index.slim within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.slim within layouts/application (4.9ms)
+  [1m[36mAdmin Load (0.6ms)[0m  [1m[34mSELECT  "people".* FROM "people" WHERE "people"."type" IN ('Admin') AND "people"."id" = $1 ORDER BY "people"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 30ms (Views: 27.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/events" for 127.0.0.1 at 2017-08-31 10:03:30 -0700
+Processing by EventsController#index as HTML
+  Rendering events/index.slim within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.slim within layouts/application (4.1ms)
+  [1m[36mAdmin Load (0.7ms)[0m  [1m[34mSELECT  "people".* FROM "people" WHERE "people"."type" IN ('Admin') AND "people"."id" = $1 ORDER BY "people"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 30ms (Views: 27.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-31 10:15:29 -0700
+  [1m[35m (28.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by EventsController#index as HTML
+  Rendering events/index.slim within layouts/application
+  [1m[36mEvent Load (12.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.slim within layouts/application (32.4ms)
+  [1m[36mAdmin Load (23.3ms)[0m  [1m[34mSELECT  "people".* FROM "people" WHERE "people"."type" IN ('Admin') AND "people"."id" = $1 ORDER BY "people"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 825ms (Views: 615.7ms | ActiveRecord: 69.7ms)
+
+
+Started DELETE "/admin/sign_out" for 127.0.0.1 at 2017-08-31 10:15:36 -0700
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"yvkUedL6vKXDbSAJ8qkC24VaDivYhBrNAhdYyyLF2UtSlE8At9Td0R8raNWKDAmeAZOwLNihC9RI5HugsoJCDQ=="}
+  [1m[36mAdmin Load (0.5ms)[0m  [1m[34mSELECT  "people".* FROM "people" WHERE "people"."type" IN ('Admin') AND "people"."id" = $1 ORDER BY "people"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 176ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-31 10:15:36 -0700
+Processing by EventsController#index as HTML
+  Rendering events/index.slim within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.slim within layouts/application (4.8ms)
+Completed 200 OK in 32ms (Views: 29.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admin/sign_up" for 127.0.0.1 at 2017-08-31 10:15:45 -0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.slim within layouts/application
+  Rendered devise/shared/_links.html.slim (4.5ms)
+  Rendered devise/registrations/new.html.slim within layouts/application (67.5ms)
+Completed 200 OK in 129ms (Views: 127.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admin" for 127.0.0.1 at 2017-08-31 10:16:15 -0700
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EsCJvFmhTfB1tS7ZNYBadgRHffMmiPFfMhbL7fYs74A406QwSl8E/WpC46vWM23SeqiDOnzThblbgKCDERTA+g==", "admin"=>{"first_name"=>"first", "last_name"=>"last", "phone"=>"(123)123-1234", "email"=>"email@email.come", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPerson Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "people" WHERE "people"."phone" = $1 LIMIT $2[0m  [["phone", "(123)123-1234"], ["LIMIT", 1]]
+  [1m[36mAdmin Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "people" WHERE "people"."type" IN ('Admin') AND "people"."email" = $1 LIMIT $2[0m  [["email", "email@email.come"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.slim within layouts/application
+  Rendered devise/shared/_links.html.slim (4.8ms)
+  Rendered devise/registrations/new.html.slim within layouts/application (17.2ms)
+Completed 200 OK in 326ms (Views: 41.9ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/admin" for 127.0.0.1 at 2017-08-31 10:16:32 -0700
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KUtF2sR3CD/TMpsFFo9EoZcRTueeOYJnMgHAKofebKsDWGhW14lBMszFVnf1PHMF6f6wLsRi9oFbl6tEYOZD0Q==", "admin"=>{"first_name"=>"first", "last_name"=>"last", "phone"=>"(113)123-1234", "email"=>"email@email.come", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPerson Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "people" WHERE "people"."phone" = $1 LIMIT $2[0m  [["phone", "(113)123-1234"], ["LIMIT", 1]]
+  [1m[36mAdmin Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "people" WHERE "people"."type" IN ('Admin') AND "people"."email" = $1 LIMIT $2[0m  [["email", "email@email.come"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.slim within layouts/application
+  Rendered devise/shared/_links.html.slim (4.7ms)
+  Rendered devise/registrations/new.html.slim within layouts/application (16.4ms)
+Completed 200 OK in 207ms (Views: 38.8ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/admin" for 127.0.0.1 at 2017-08-31 10:16:43 -0700
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"69HDKZZOJgFJu4cOk9wbonMOez2BS9m//parkmsdFc/Bwu6lhbBvDFZMSnxwbywGDeGF9NsQrVmXAMD8jCU6tQ==", "admin"=>{"first_name"=>"first", "last_name"=>"last", "phone"=>"(113)123-1234", "email"=>"email@email.come", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPerson Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "people" WHERE "people"."phone" = $1 LIMIT $2[0m  [["phone", "(113)123-1234"], ["LIMIT", 1]]
+  [1m[36mAdmin Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "people" WHERE "people"."type" IN ('Admin') AND "people"."email" = $1 LIMIT $2[0m  [["email", "email@email.come"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "people" ("email", "encrypted_password", "created_at", "updated_at", "type", "last_name", "first_name", "phone") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "email@email.come"], ["encrypted_password", "$2a$11$tQ0W31obuBzGPbsUjOjWpOXSnlItK3wx032BcWMedv5Y6NgyuU.j."], ["created_at", "2017-08-31 17:16:43.912230"], ["updated_at", "2017-08-31 17:16:43.912230"], ["type", "Admin"], ["last_name", "last"], ["first_name", "first"], ["phone", "(113)123-1234"]]
+  [1m[35m (31.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "people" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "people"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2017-08-31 17:16:43.946365"], ["last_sign_in_at", "2017-08-31 17:16:43.946365"], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["updated_at", "2017-08-31 17:16:43.947232"], ["id", 3]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 208ms (ActiveRecord: 34.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-31 10:16:43 -0700
+Processing by EventsController#index as HTML
+  Rendering events/index.slim within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.slim within layouts/application (4.1ms)
+  [1m[36mAdmin Load (0.6ms)[0m  [1m[34mSELECT  "people".* FROM "people" WHERE "people"."type" IN ('Admin') AND "people"."id" = $1 ORDER BY "people"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 29ms (Views: 26.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/events/new" for 127.0.0.1 at 2017-08-31 10:17:07 -0700
+Processing by EventsController#new as HTML
+  Rendering events/new.slim within layouts/application
+  Rendered events/_errors.slim (3.2ms)
+  Rendered events/_form.slim (41.1ms)
+  Rendered events/new.slim within layouts/application (55.2ms)
+  [1m[36mAdmin Load (0.5ms)[0m  [1m[34mSELECT  "people".* FROM "people" WHERE "people"."type" IN ('Admin') AND "people"."id" = $1 ORDER BY "people"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 119ms (Views: 79.5ms | ActiveRecord: 2.2ms)
+
+
