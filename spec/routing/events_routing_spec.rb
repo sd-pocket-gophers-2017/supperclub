@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Routing to events#index", :type => :routing do
   it "routes GET /events#index to events#index#index" do
-    expect(:get => "/events#index").to route_to("events#index#index")
+    expect(:get => "/events#index").to route_to("events#index")
   end
 
   it "routes GET /events/new to events#new" do
