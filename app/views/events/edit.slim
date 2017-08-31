@@ -1,0 +1,5 @@
+h2 Edit Event
+
+= form_for @event, url: {action:"update"} do |f|
+
+ = render :partial => 'form', :locals => {:f => f}

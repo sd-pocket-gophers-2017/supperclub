@@ -1,24 +1,41 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+TEAM NAME: PINEAPPLES
 
-Things you may want to cover:
+MEMBERS:  Alexis Deruyter
+          Mark Kim
+          Emmet Mahdavi
 
-* Ruby version
+User Stories:
+  - User can create account
+  -- or --
+  - User can log in
 
-* System dependencies
+  - User is able to create guests(contacts) consisting of:
+    + name
+    + email
+    + phone
 
-* Configuration
+  - User is able to create an event consisting of:
+    + title
+    + datetime
+    + description
+    + location
 
-* Database creation
+  parentheses means maybe
+  (- User can delete or edit event which notifies guests)
 
-* Database initialization
+  - User can send invites to guests for specific event, thus invite contains:
+    + event_id
+    + guest_id
+    + attribute 'accepted' initialized to null, switched to bool when responded
 
-* How to run the test suite
+  (- User can delete invite, which sends text to guest alerting them lol)
 
-* Services (job queues, cache servers, search engines, etc.)
+  - Guests receive invitations via sms
+  - Guests respond to invitations via sms
+  - Guests responses are stored in db
 
-* Deployment instructions
+  - User can see per event guests classified by rsvp
 
-* ...
+  - User can log out

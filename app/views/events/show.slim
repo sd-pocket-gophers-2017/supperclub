@@ -1,0 +1,27 @@
+h2 Event Details
+
+p
+  strong Name:
+  = " #{@event.name}"
+  br
+
+p
+  strong Description:
+  = " #{@event.description}"
+  br
+
+p
+  strong Location:
+  = " #{@event.location}"
+  br
+
+p
+  strong Date:
+  = " #{@event.date_time.strftime("%b %-d, %Y")}"
+  br
+
+p
+  strong Time:
+  = " #{@event.date_time.strftime("%-I:%M %p")}"
+  br
+  = link_to 'Delete', event_path(@event), method: :delete
