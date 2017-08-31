@@ -1,8 +1,7 @@
 require 'rails_helper'
 
-describe AdminsController do
-  let!(:admin) { admin.create!(first_name: "Jim", last_name: "Bob", phone: "(121)121-1212") }
-
+RSpec.describe EventsController do
+  let!(:event) { Event.create!(user_throw: Game::THROWS.sample) }
   describe "GET #index" do
     it "responds with status code 200" do
       get :index
@@ -36,4 +35,4 @@ describe AdminsController do
       expect(response).to render_template(:show)
     end
   end
-
+end

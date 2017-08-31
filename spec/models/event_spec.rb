@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Event do
+RSpec.describe Event, :type => :model do
   let(:event) { Event.new }
 
   describe "#future_date" do
