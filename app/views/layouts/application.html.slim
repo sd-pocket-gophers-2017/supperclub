@@ -10,6 +10,7 @@ html
     header
       ul
         - if admin_signed_in?
+          li = link_to 'New Event', new_event_path
           li = link_to 'Events', events_path
           li = link_to 'Logout', destroy_admin_session_path, method: :delete
         - else
