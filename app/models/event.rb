@@ -4,9 +4,12 @@ class Event < ApplicationRecord
   has_many :guests, through: :invites
 
   validates :name, :location, :date_time, presence: true
-  validate :future_date
+  # validate :future_date
+
+  scope :closed, -> {where("date_time < ?", [DateTime.now])}
+  scope :most_recent, -> {closed.order(:date_time).last}
 
   def future_date
-    errors.add( :date_time, "can't be in the past") if date_time and date_time < DateTime.now
+    errors.add( :date_time, "can't be in the past") if date_time && date_time < DateTime.now
   end
 end
