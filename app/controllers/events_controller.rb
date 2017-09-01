@@ -51,6 +51,10 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
+  def present
+    @event = Event.find_by(token: params[:id])
+  end
+
   private
     def event_params
       params.require(:event).permit(:name, :date_time, :location, :description)

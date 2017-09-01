@@ -16,4 +16,6 @@ Rails.application.routes.draw do
       post 'reply'
     end
   end
+
+  get '/:id', to: 'events#present'
 end
