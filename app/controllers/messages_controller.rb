@@ -5,12 +5,12 @@ class MessagesController < ApplicationController
 
   def send_messages
     @event = Event.find(params[:event_id])
-    Messenger.send_messages(@event)
+    Messenger.new.send_messages(@event)
     redirect_to @event
   end
 
   def reply
-    Messenger.reply(params['From'], params['Body'])
+    Messenger.new.reply(params['From'], params['Body'])
   end
 
   private
