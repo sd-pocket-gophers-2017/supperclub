@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
     message_body = params['Body']
     from_number = params['From']
     guest = Guest.find_by(phone: from_number)
-    invite = guest.invites.order(:date_time).last
+    invite = guest.invites.order(:created_at).last
     case message_body.downcase
     when 'rsvp'
       response = 'Thank you for RSVPing'
