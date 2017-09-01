@@ -19,14 +19,15 @@ class MessagesController < ApplicationController
   def reply
     message_body = params['Body']
     from_number = params['From']
-    guest = Invite.open.joins(:people).where(phone: 'from_number').first
+    guest = Guest.find_by(phone: from_number)
+    invite = guest.invites.order(:date_time).last
     case message_body.downcase
     when 'rsvp'
       response = 'Thank you for RSVPing'
-      guest.update(accepted: 'true')
+      invite.update(accepted: 'true')
     when 'no'
       response = 'Maybe next time'
-      guest.update(accepted: 'false')
+      invite.update(accepted: 'false')
     else
       response = "I didn't understand.  Please respond 'rsvp' to accept or 'no' to decline."
     end
