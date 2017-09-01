@@ -42,7 +42,7 @@ class Messenger
       @client.messages.create(
         from: ENV['TWILIO_NUMBER'],
         to: invite.guest.phone,
-        body: "Only 2 days until #{invite.event.title}! Please let #{host_name} know if you can come. Respond 'rsvp' to accept or 'no' to decline.\n Full Details:\n http://clubpineapple.herokuapp.com/visitor/#{invite.event.token}"
+        body: "Only 2 days until #{invite.event.name}! Please let #{host_name} know if you can come. Respond 'rsvp' to accept or 'no' to decline.\n Full Details:\n http://clubpineapple.herokuapp.com/visitor/#{invite.event.token}"
         )
     end
   end
