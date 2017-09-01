@@ -1,8 +1,8 @@
-h1 = "#{@event.name} Guest List"
+h1.flow-text = "#{@event.name} Guest List"
 
 = link_to 'Add New Guest', new_event_guest_path(@event)
 
-h2 Current Guest List
+h2.flow-text Current Guest List
 - if @event.invites.any?
   table
     - @event.invites.each do |invite|

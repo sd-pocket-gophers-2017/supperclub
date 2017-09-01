@@ -1,6 +1,6 @@
 - if @guest.errors.any?
-  div
+  div.flow-text.red-text
     = "The form has #{pluralize(@guest.errors.count, 'error')}"
   ul
     - @guest.errors.full_messages.each do |msg|
-      li = "#{msg}"
+      li.flow-text.red-text = "#{msg}"

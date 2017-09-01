@@ -3,15 +3,15 @@ div
   = f.text_field :name
   br
   | Description:
-  = f.text_area :description
+  = f.text_field :description, class:'materialize-textarea'
   br
   | Location:
   = f.text_field :location
   br
   | Start Date:
-  = f.date_select :date_time
+  = f.text_field :date_time, class:'datepicker'
   br
   | Start Time:
-  = f.time_select :date_time, :ignore_date => true
+  = f.text_field :date_time, class:'timepicker'
   br
   = f.submit "Create"
