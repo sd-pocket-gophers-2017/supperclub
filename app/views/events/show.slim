@@ -27,3 +27,14 @@ p
   = link_to 'Delete', event_path(@event), method: :delete
 
 iframe width='600' height='450' frameborder='0' src="https://www.google.com/maps/embed/v1/place?key=#{ENV['MAPS_KEY']}&q=#{URI.encode(@event.location)}"
+
+h3 Guests
+- if @event.invites.any?
+  table
+    tr
+      th Full Name
+      th Status
+    - @event.invites.each do |invite|
+      tr
+        td = invite.guest.full_name
+        td = invite.accepted
