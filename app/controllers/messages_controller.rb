@@ -24,10 +24,10 @@ class MessagesController < ApplicationController
     case message_body.downcase
     when 'rsvp'
       response = 'Thank you for RSVPing'
-      invite.update(accepted: 'true')
+      invite.update(accepted: 'Accepted')
     when 'no'
       response = 'Maybe next time'
-      invite.update(accepted: 'false')
+      invite.update(accepted: 'Declined')
     else
       response = "I didn't understand.  Please respond 'rsvp' to accept or 'no' to decline."
     end
