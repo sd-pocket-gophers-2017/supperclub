@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
       @client.messages.create(
         from: ENV['TWILIO_NUMBER'],
         to: invite.guest.phone,
-        body: "You're invited!  #{invite.event.location} at #{invite.event.date_time.strftime('%b %-d, %Y %-l:%M %P')}, please respond 'rsvp' to accept or 'no' to decline."
+        body: "You're invited!  #{invite.event.location} at #{invite.event.date_time.strftime('%b %-d, %Y %-l:%M %P')}, please respond 'rsvp' to accept or 'no' to decline.\n Full Details:\n http://clubpineapple.herokuapp.com/#{@event.token}"
         )
     end
     redirect_to @event
