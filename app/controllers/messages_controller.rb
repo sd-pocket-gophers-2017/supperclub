@@ -1,14 +1,19 @@
+require 'twilio-ruby'
+
 class MessagesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-  def send
-    Invite.open.each do |invite|
-      @client.messeges.create(
+  def send_messages
+    @event = Event.find(params[:event_id])
+    boot_twilio
+    @event.invites.each do |invite|
+      @client.messages.create(
         from: ENV['TWILIO_NUMBER'],
         to: invite.guest.phone,
-        body: "You're invited!  #{invite.event.location} at #{invite.event.time}, please respond 'rsvp' to accept or 'no' to decline."
+        body: "You're invited!  #{invite.event.location} at #{invite.event.date_time.strftime('%b %-d, %Y %-l:%M %P')}, please respond 'rsvp' to accept or 'no' to decline."
         )
     end
+    redirect_to @event
   end
 
   def reply
