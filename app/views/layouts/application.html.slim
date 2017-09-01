@@ -2,20 +2,29 @@ doctype html
 html
   head
     title
-      | Supperclub
+      | Supper Club
     = csrf_meta_tags
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     header
-      ul
-        - if admin_signed_in?
-          li = link_to 'New Event', new_event_path
-          li = link_to 'Events', events_path
-          li = link_to 'Logout', destroy_admin_session_path, method: :delete
-        - else
-          li = link_to 'Register', new_admin_registration_path
-          li = link_to 'Login', new_admin_session_path
+      div.container
+        nav.navbar
+          ul
+            - if admin_signed_in?
+              li = link_to 'New Event', new_event_path
+              li = link_to 'Events', events_path
+              li = link_to 'Logout', destroy_admin_session_path, method: :delete
+            - else
+              li = link_to 'Register', new_admin_registration_path
+              li = link_to 'Login', new_admin_session_path
 
-    main
-      == yield
+      main
+        div.container
+          == yield

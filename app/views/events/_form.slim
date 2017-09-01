@@ -1,17 +1,17 @@
 div
-  | Event Name:
-  = f.text_field :name
+  = label_tag(:name, "Event Name:")
+  = text_field_tag('event[name]')
   br
-  | Description:
-  = f.text_area :description
+  = label_tag(:description, "Description:")
+  = text_field_tag('event[description]')
   br
-  | Location:
-  = f.text_field :location
+  = label_tag(:location, "Location:")
+  = text_field_tag('event[location]')
   br
-  | Start Date:
-  = f.date_select :date_time
+  = label_tag(:start_date, "Start Date:")
+  = text_field_tag('event[start_date]', '', class:'datepicker')
   br
-  | Start Time:
-  = f.time_select :date_time, :ignore_date => true
-
-  = f.submit "Create"
+  = label_tag(:start_time, "Start Time:")
+  = text_field_tag('event[start_time]', '', class:'timepicker')
+  br
+  = button_tag('Create')
