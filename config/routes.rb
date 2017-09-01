@@ -17,5 +17,5 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/:id', to: 'events#present'
+  get '/visitor/:id', to: 'events#present'
 end
