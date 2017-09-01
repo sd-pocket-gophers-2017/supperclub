@@ -1,27 +1,27 @@
-h2 Event Details
+h2.flow-text Event Details
 
-p
-  strong Name:
+p.flow-text
+  | Name:
   = " #{@event.name}"
   br
 
-p
-  strong Description:
+p.flow-text
+  | Description:
   = " #{@event.description}"
   br
 
-p
-  strong Location:
+p.flow-text
+  | Location:
   = " #{@event.location}"
   br
 
-p
-  strong Date:
+p.flow-text
+  | Date:
   = " #{@event.date_time.strftime("%b %-d, %Y")}"
   br
 
-p
-  strong Time:
+p.flow-text
+  | Time:
   = " #{@event.date_time.strftime("%-I:%M %p")}"
   br
   = link_to 'Delete', event_path(@event), method: :delete

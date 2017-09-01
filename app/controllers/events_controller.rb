@@ -14,6 +14,9 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    date_time = DateTime.parse([params[:event][:start_date], params[:event][:start_time]].join(' '))
+    # date_time = params[:event][:start_date] + params[:event][:start_time]
+    @event.date_time = date_time
     @event.admin = current_admin
     if @event.save
       if current_admin.events.closed.any?
@@ -49,6 +52,6 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.require(:event).permit(:name, :date_time, :location, :description)
+      params.require(:event).permit(:name, :location, :description)
     end
 end
