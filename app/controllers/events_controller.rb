@@ -20,7 +20,12 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.admin = current_admin
     if @event.save
-      redirect_to @event
+      if current_admin.events.closed.any?
+        current_admin.events.most_recent.guests.each do |guest|
+          Invite.create(guest: guest, event: @event)
+        end
+      end
+      redirect_to event_invites_path(@event)
     else
       render 'new'
     end

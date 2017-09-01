@@ -2,26 +2,28 @@ h2 Event Details
 
 p
   strong Name:
-  = "#{@event.name}"
+  = " #{@event.name}"
   br
 
 p
   strong Description:
-  = "#{@event.description}"
+  = " #{@event.description}"
   br
 
 p
   strong Location:
-  = "#{@event.location}"
+  = " #{@event.location}"
   br
 
 p
   strong Date:
-  = "#{@event.date_time.strftime("%b %-d, %Y")}"
+  = " #{@event.date_time.strftime("%b %-d, %Y")}"
   br
 
 p
   strong Time:
-  = "#{@event.date_time.strftime("%-I:%M %p")}"
+  = " #{@event.date_time.strftime("%-I:%M %p")}"
   br
   = link_to 'Delete', event_path(@event), method: :delete
+
+iframe width='600' height='450' frameborder='0' src="https://www.google.com/maps/embed/v1/place?key=#{ENV['MAPS_KEY']}&q=#{URI.encode(@event.location)}"

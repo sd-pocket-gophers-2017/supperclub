@@ -4,4 +4,7 @@ class Admin < Person
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :events
+  has_many :sent_invites, through: :events, source: :invites
+  has_many :guests, through: :sent_invites
 end
