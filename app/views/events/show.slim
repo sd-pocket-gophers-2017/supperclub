@@ -28,7 +28,7 @@ p.flow-text
 
 iframe width='600' height='450' frameborder='0' src="https://www.google.com/maps/embed/v1/place?key=#{ENV['MAPS_KEY']}&q=#{URI.encode(@event.location)}"
 
-h3 Guests
+h3.flow-text Guests
 - if @event.invites.any?
   table
     tr
