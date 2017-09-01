@@ -37,8 +37,8 @@ class Messenger
 
   def follow_up
     boot_twilio
-    Invite.open.events.in_two_days.each do |invite|
-      host_name = invite.admin.full_name
+    Invite.open.in_two_days.each do |invite|
+      host_name = invite.event.admin.full_name
       @client.messages.create(
         from: ENV['TWILIO_NUMBER'],
         to: invite.guest.phone,
