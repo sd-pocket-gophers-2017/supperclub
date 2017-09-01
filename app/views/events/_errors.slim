@@ -3,4 +3,4 @@
     = "The form has #{pluralize(@event.errors.count, 'error')}"
   ul
     - @event.errors.full_messages.each do |msg|
-      li = "#{msg}"
+      li.flow-text = "#{msg}"

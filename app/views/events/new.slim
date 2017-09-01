@@ -1,6 +1,6 @@
 = render :partial => 'errors', :locals => {:title => "Errors"}
 
-h2 New Event
+h2.flow-text New Event
 
 = form_for @event, url: {action:"create"} do |f|
  = render :partial => 'form', :locals => {:f => f}
