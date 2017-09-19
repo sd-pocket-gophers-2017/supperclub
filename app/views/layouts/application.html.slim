@@ -8,20 +8,23 @@ html
     <!-- Compiled and minified JavaScript -->
     script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"
     script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"
+    = javascript_include_tag 'application'
 
   body
-    header
-      .container
-        nav.navbar
-          ul
-            - if admin_signed_in?
-              li = link_to 'New Event', new_event_path
-              li = link_to 'Events', events_path
-              li = link_to 'Logout', destroy_admin_session_path, method: :delete
-            - else
-              li = link_to 'Register', new_admin_registration_path
-              li = link_to 'Login', new_admin_session_path
+    .container
+      .row
+        header
+          nav
+            .nav-wrapper
+              = link_to 'Textvent', root_path, class: 'center flow-text brand-logo'
+              ul
+                - if admin_signed_in?
+                  li = link_to 'New Event', new_event_path
+                  li = link_to 'Events', events_path
+                  li = link_to 'Logout', destroy_admin_session_path, method: :delete
+                - else
+                  li = link_to 'Register', new_admin_registration_path
+                  li = link_to 'Login', new_admin_session_path
 
       main
-        .container
-          == yield
+        == yield

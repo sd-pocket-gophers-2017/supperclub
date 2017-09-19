@@ -1,13 +1,12 @@
-h2.flow-text
-  | Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password
-    br
-    = f.password_field :password, autocomplete: "off"
-  .actions
-    = f.submit "Log in"
+.row
+  .col.s12.m12.l6.offset-l3
+    h2.flow-text Log in
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .field.input-field
+        = f.label :email
+        = f.email_field :email, autofocus: true
+      .field.input-field
+        = f.label :password
+        = f.password_field :password, autocomplete: "off"
+      .actions
+        = f.submit "Log in", class: 'btn waves-light waves-effect'

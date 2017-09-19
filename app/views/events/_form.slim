@@ -1,17 +1,26 @@
-div
-  = label_tag(:name, "Event Name:")
-  = text_field_tag('event[name]')
-  br
-  = label_tag(:description, "Description:")
-  = text_field_tag('event[description]')
-  br
-  = label_tag(:location, "Location:")
-  = text_field_tag('event[location]')
-  br
-  = label_tag(:start_date, "Start Date:")
-  = text_field_tag('event[start_date]', '', class:'datepicker')
-  br
-  = label_tag(:start_time, "Start Time:")
-  = text_field_tag('event[start_time]', '', class:'timepicker')
-  br
-  = button_tag('Create')
+.row
+  .col.s12.m12.l4.offset-l1
+    .input-field
+      = label_tag(:name, "Event Name")
+      = text_field_tag('event[name]', '', autofocus: true)
+  .col.s12.m12.l4.offset-l2
+    .input-field
+      = label_tag(:location, "Location")
+      = text_field_tag('event[location]')
+.row
+  .col.s12.m12.l4.offset-l1
+    .input-field
+      = label_tag(:start_date, "Start Date")
+      = text_field_tag('event[start_date]', '', class:'datepicker')
+  .col.s12.m12.l4.offset-l2
+    .input-field
+      = label_tag(:start_time, "Start Time")
+      = text_field_tag('event[start_time]', '', class:'timepicker')
+.row
+  .col.s12.m12.l10.offset-l1
+    .input-field
+      = label_tag(:description, "Description")
+      = text_area_tag('event[description]', '', class: 'materialize-textarea')
+.row
+  .col.s12.m12.l12.center-align
+    = button_tag('Create', class: 'btn waves-light waves-effect')
