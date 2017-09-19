@@ -5,8 +5,9 @@
 .row
   .col.l10.offset-l1.hide-on-med-and-down
     .card.horizontal
-      .card-image.video-container
-        iframe width='600' height='450' frameborder='0' src="https://www.google.com/maps/embed/v1/place?key=#{ENV['MAPS_KEY']}&q=#{URI.encode(@event.location)}"
+      .card-image
+        .video-container
+          iframe width='600' height='450' frameborder='0' src="https://www.google.com/maps/embed/v1/place?key=#{ENV['MAPS_KEY']}&q=#{URI.encode(@event.location)}"
       .card-stacked
         .card-content
           p.flow-text = "Name: #{@event.name}"
