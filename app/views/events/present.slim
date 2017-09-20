@@ -1,32 +1,24 @@
-h2 Event Details
+.row
+  .col.s12.m12.l6
+    .hide-on-med-and-down
+      h3.flow-text.left-align
+        strong = "#{@event.name}"
+      h3.flow-text.left-align = "Hosted by: #{@event.admin.full_name}"
+    .hide-on-large-only
+      h3.flow-text.center-align
+        strong = " #{@event.name}"
+      h3.flow-text.center-align = "Hosted by: #{@event.admin.full_name}"
+  .col.s12.m12.l6
+    .hide-on-med-and-down
+      h3.flow-text.right-align
+        em = @event.date_time.strftime("%B %-d, %Y at %-l:%M %p")
+    .hide-on-large-only
+      h3.flow-text.center-align
+        em = @event.date_time.strftime("%B %-d, %Y at %-l:%M %p")
 
-p
-  strong Name:
-  = " #{@event.name}"
-  br
-
-p
-  strong Host:
-  = " #{@event.admin.full_name}"
-
-p
-  strong Description:
-  = " #{@event.description}"
-  br
-
-p
-  strong Location:
-  = " #{@event.location}"
-  br
-
-p
-  strong Date:
-  = " #{@event.date_time.strftime("%b %-d, %Y")}"
-  br
-
-p
-  strong Time:
-  = " #{@event.date_time.strftime("%-I:%M %p")}"
-  br
-
-iframe width='600' height='450' frameborder='0' src="https://www.google.com/maps/embed/v1/place?key=#{ENV['MAPS_KEY']}&q=#{URI.encode(@event.location)}"
+.row
+  .col.s12.m12.l12.center-align
+    iframe width='600' height='450' frameborder='0' src="https://www.google.com/maps/embed/v1/place?key=#{ENV['MAPS_KEY']}&q=#{URI.encode(@event.location)}"
+.row
+  .col.s12.m12.l12
+    p.flow-text.center-align = @event.description

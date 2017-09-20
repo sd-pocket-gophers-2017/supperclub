@@ -1,5 +1,6 @@
-h1.flow-text Events
-ul
-  - @events.each do |event|
-    li.flow-text = link_to event.name, event_path(event)
-
+.row
+  .col.s12.m12.l12
+    h1.flow-text.center-align Events
+    .collection
+      - @events.each do |event|
+        = link_to event.name, event_path(event), class: 'collection-item flow-text'
