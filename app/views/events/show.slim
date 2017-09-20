@@ -7,6 +7,7 @@
     .hide-on-large-only
       h3.flow-text.center-align
         strong = " #{@event.name}"
+        span = link_to '<i class="material-icons red-text">delete</i>'.html_safe, event_path(@event), method: 'delete'
   .col.s12.m12.l6
     .hide-on-med-and-down
       h3.flow-text.right-align
@@ -22,20 +23,16 @@
   .col.s12.m12.l12
     p.flow-text.center-align = @event.description
 .row
-  .col.s12.m12.l12
+  .col.s12.m12.l8.offset-l2
     - if @event.invites.any?
       ul.collection.with-header
         li.collection-header
-          h3 Guests
-
-      h3.flow-text Guests
-      table
-        tr
-          th Full Name
-          th Status
+          h3.flow-text.center-align Guests
         - @event.invites.each do |invite|
-          tr
-            td = invite.guest.full_name
-            td = invite.accepted
-    - else
-      h4.flow-texts.center-align = link_to 'Invite Guests', event_invites_path(@event)
+          li.collection-item.flow-text
+            = invite.guest.full_name
+            - if invite.accepted == 'true'
+              i.secondary-content.material-icons.green-text done
+            - elsif invite.accepted == 'false'
+              i.secondary-content.material-icons.red-text clear
+    h4.flow-texts.center-align = link_to 'Invite Guests', event_invites_path(@event), class: 'btn waves-light waves-effect'

@@ -18,7 +18,17 @@ html
           nav
             .nav-wrapper
               = link_to 'Textvent', root_path, class: 'center flow-text brand-logo'
-              ul
+              a href='#' data-activates='mobile-demo' class='button-collapse'
+                i.material-icons menu
+              ul.hide-on-med-and-down
+                - if admin_signed_in?
+                  li = link_to 'New Event', new_event_path
+                  li = link_to 'Events', events_path
+                  li = link_to 'Logout', destroy_admin_session_path, method: :delete
+                - else
+                  li = link_to 'Register', new_admin_registration_path
+                  li = link_to 'Login', new_admin_session_path
+              ul.side-nav#mobile-demo
                 - if admin_signed_in?
                   li = link_to 'New Event', new_event_path
                   li = link_to 'Events', events_path

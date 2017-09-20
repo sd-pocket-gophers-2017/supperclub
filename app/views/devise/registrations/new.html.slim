@@ -1,36 +1,39 @@
 .row
   .col.s12.m12.l12
-    h2.flow-text.center-align Sign up
+    h2.flow-text.center-align
+      strong Sign up
     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-      = devise_error_messages!
       .row
-        .col.s12.m12.l4.offset-l1
+        .col.s12.m12.l8.offset-l2
+          = devise_error_messages!
+      .row
+        .col.s12.m12.l4.offset-l2
           .field.input-field
             = f.label :first_name
             = f.text_field :first_name, autofocus: true
-        .col.s12.m12.l4.offset-l2
+        .col.s12.m12.l4
           .field.input-field
             = f.label :last_name
             = f.text_field :last_name
       .row
-        .col.s12.m12.l4.offset-l1
+        .col.s12.m12.l4.offset-l2
           .field.input-field
             = f.label :phone
             = f.text_field :phone
-        .col.s12.m12.l4.offset-l2
+        .col.s12.m12.l4
           .field.input-field
             = f.label :email
             = f.email_field :email
       .row
-        .col.s12.m12.l4.offset-l1
+        .col.s12.m12.l4.offset-l2
           .field.input-field
             = f.label :password
             = f.password_field :password, autocomplete: "off"
-        .col.s12.m12.l4.offset-l2
+        .col.s12.m12.l4
           .field.input-field
             = f.label :password_confirmation
             = f.password_field :password_confirmation, autocomplete: "off"
       .row
-        .col.s12.m12.l12.center-align
+        .col.s12.m12.l8.offset-l2.center-align
           .actions
             = f.submit "Sign up", class: 'btn waves-light waves-effect'

@@ -1,8 +1,9 @@
-= render :partial => 'errors', :locals => {:title => "Errors"}
-
 .row
   .col.s12.m12.l12
-    h2.flow-text.center-align New Event
-
-    = form_tag('/events', method: 'post') do
-     = render :partial => 'form'
+    h2.flow-text.center-align
+      strong New Event
+.row
+  .col.s12.m12.l10.offset-l1
+    = render :partial => 'errors', :locals => {:title => "Errors"}
+  = form_tag('/events', method: 'post') do
+   = render :partial => 'form'
