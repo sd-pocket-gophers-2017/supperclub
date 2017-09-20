@@ -1,42 +1,41 @@
 .row
-  .col.s12.m12.l12
-    h2.flow-text.center-align Event Details
+  .col.s12.m12.l6
+    .hide-on-med-and-down
+      h3.flow-text.left-align
+        strong = " #{@event.name} "
+        span = link_to '<i class="material-icons red-text">delete</i>'.html_safe, event_path(@event), method: 'delete'
+    .hide-on-large-only
+      h3.flow-text.center-align
+        strong = " #{@event.name}"
+  .col.s12.m12.l6
+    .hide-on-med-and-down
+      h3.flow-text.right-align
+        em = @event.date_time.strftime("%B %-d, %Y at %-l:%M %p")
+    .hide-on-large-only
+      h3.flow-text.center-align
+        em = @event.date_time.strftime("%B %-d, %Y at %-l:%M %p")
 
 .row
-  .col.l10.offset-l1.hide-on-med-and-down
-    .card.horizontal
-      .card-image
-        .video-container
-          iframe width='600' height='450' frameborder='0' src="https://www.google.com/maps/embed/v1/place?key=#{ENV['MAPS_KEY']}&q=#{URI.encode(@event.location)}"
-      .card-stacked
-        .card-content
-          p.flow-text = "Name: #{@event.name}"
-          p.flow-text = "Date: #{@event.date_time.strftime("%b %-d, %Y")}"
-          p.flow-text = "Time: #{@event.date_time.strftime("%-I:%M %p")}"
-          p.flow-text = "Location: #{@event.location}"
-          p.flow-text = "Description: #{@event.description}"
+  .col.s12.m12.l12.center-align
+    iframe width='600' height='450' frameborder='0' src="https://www.google.com/maps/embed/v1/place?key=#{ENV['MAPS_KEY']}&q=#{URI.encode(@event.location)}"
+.row
+  .col.s12.m12.l12
+    p.flow-text.center-align = @event.description
+.row
+  .col.s12.m12.l12
+    - if @event.invites.any?
+      ul.collection.with-header
+        li.collection-header
+          h3 Guests
 
-p.flow-text = "Name: #{@event.name}"
-
-p.flow-text = "Description: #{@event.description}"
-
-p.flow-text = "Location: #{@event.location}"
-
-p.flow-text = "Date: #{@event.date_time.strftime("%b %-d, %Y")}"
-
-p.flow-text = "Time: #{@event.date_time.strftime("%-I:%M %p")}"
-
-= link_to 'Delete', event_path(@event), method: :delete
-
-iframe width='600' height='450' frameborder='0' src="https://www.google.com/maps/embed/v1/place?key=#{ENV['MAPS_KEY']}&q=#{URI.encode(@event.location)}"
-
-h3.flow-text Guests
-- if @event.invites.any?
-  table
-    tr
-      th Full Name
-      th Status
-    - @event.invites.each do |invite|
-      tr
-        td = invite.guest.full_name
-        td = invite.accepted
+      h3.flow-text Guests
+      table
+        tr
+          th Full Name
+          th Status
+        - @event.invites.each do |invite|
+          tr
+            td = invite.guest.full_name
+            td = invite.accepted
+    - else
+      h4.flow-texts.center-align = link_to 'Invite Guests', event_invites_path(@event)
