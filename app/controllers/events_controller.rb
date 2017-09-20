@@ -11,7 +11,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
   end
-  
+
   #only if logged in
   def new
     @event = Event.new
@@ -20,8 +20,13 @@ class EventsController < ApplicationController
   # only if logged in
   def create
     @event = Event.new(event_params)
-    date_time = DateTime.parse([params[:event][:start_date], params[:event][:start_time]].join(' '))
-    # date_time = params[:event][:start_date] + params[:event][:start_time]
+    if params[:event][:start_date] == '' || params[:event][:start_date] == ''
+      @event.errors.add( :base, 'Must include start date and time')
+      render 'new'
+      return
+    else
+      date_time = DateTime.parse([params[:event][:start_date], params[:event][:start_time]].join(' '))
+    end
     @event.date_time = date_time
     @event.admin = current_admin
     if @event.save
