@@ -3,7 +3,7 @@
     h1.flow-text.left-align
       strong = "#{@event.name} Guest List"
   .col.s6.m6.l6.right-align
-    = link_to 'Add New Guest', new_event_guest_path(@event), class: 'btn waves-light waves-effect'
+    = link_to 'Add New Guest', new_event_guest_path(@event), class: 'btn waves-light waves-effect blue accent-4'
 
 .row
   .col.s12.m12.l6.center-align
@@ -15,7 +15,7 @@
           li.collection-item.flow-text
             = invite.guest.full_name
             = link_to '<i class="material-icons red-text">highlight_off</i>'.html_safe, event_invite_path(@event, invite), method: :delete, class: 'secondary-content'
-    = button_to 'Send Invites', send_messages_messages_path, method: :post, params: {event_id: @event.id}, class: 'btn waves-light waves-effect'
+    = button_to 'Send Invites', send_messages_messages_path, method: :post, params: {event_id: @event.id}, class: 'btn waves-light waves-effect blue accent-4'
 
   .col.s12.m12.l6
     ul.collection.with-header
