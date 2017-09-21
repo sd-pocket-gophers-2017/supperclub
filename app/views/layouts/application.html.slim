@@ -10,13 +10,14 @@ html
     script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"
     script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"
     = javascript_include_tag 'application'
+    = stylesheet_link_tag 'application', media: 'all'
 
   body
     .container
       .row
         header
           nav
-            .nav-wrapper
+            .nav-wrapper.blue
               = link_to 'TextEvent', root_path, class: 'center flow-text brand-logo'
               a href='#' data-activates='mobile-demo' class='button-collapse'
                 i.material-icons menu
