@@ -3,4 +3,4 @@
     h1.flow-text.center-align Events
     .collection
       - @events.each do |event|
-        = link_to event.name, event_path(event), class: 'collection-item flow-text blue-text text-accent-4'
+        = link_to "<div class='flow-text blue-text text-accent-4'>#{event.name}<span class='secondary-content flow-text blue-text text-accent-4'>#{event.date_time.strftime('%-m/%-d/%y')}</span></div>".html_safe, event_path(event), class: 'collection-item'
