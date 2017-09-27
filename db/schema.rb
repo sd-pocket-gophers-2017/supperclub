@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20170901032932) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "admin_id"
-    t.string "token", null: false
+    t.string "token"
     t.index ["token"], name: "index_events_on_token", unique: true
   end
 
