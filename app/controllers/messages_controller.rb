@@ -5,38 +5,12 @@ class MessagesController < ApplicationController
 
   def send_messages
     @event = Event.find(params[:event_id])
-    boot_twilio
-    @event.invites.each do |invite|
-      @client.messages.create(
-        from: ENV['TWILIO_NUMBER'],
-        to: invite.guest.phone,
-        body: "You're invited!  #{invite.event.location} at #{invite.event.date_time.strftime('%b %-d, %Y %-l:%M %P')}, please respond 'rsvp' to accept or 'no' to decline.\n Full Details:\n http://clubpineapple.herokuapp.com/#{@event.token}"
-        )
-    end
+    Messenger.new.send_messages(@event)
     redirect_to @event
   end
 
   def reply
-    message_body = params['Body']
-    from_number = params['From']
-    guest = Guest.find_by(phone: from_number)
-    invite = guest.invites.order(:created_at).last
-    case message_body.downcase
-    when 'rsvp'
-      response = 'Thank you for RSVPing'
-      invite.update(accepted: 'Accepted')
-    when 'no'
-      response = 'Maybe next time'
-      invite.update(accepted: 'Declined')
-    else
-      response = "I didn't understand.  Please respond 'rsvp' to accept or 'no' to decline."
-    end
-    boot_twilio
-    sms = @client.messages.create(
-      from: ENV['TWILIO_NUMBER'],
-      to: from_number,
-      body: response
-      )
+    Messenger.new.reply(params['From'], params['Body'])
   end
 
   private

@@ -1,40 +1,38 @@
-h2.flow-text Event Details
+.row
+  .col.s12.m12.l6
+    .hide-on-med-and-down
+      h3.flow-text.left-align
+        strong = " #{@event.name} "
+        span = link_to '<i class="material-icons red-text">delete</i>'.html_safe, event_path(@event), method: 'delete'
+    .hide-on-large-only
+      h3.flow-text.center-align
+        strong = " #{@event.name}"
+        span = link_to '<i class="material-icons red-text">delete</i>'.html_safe, event_path(@event), method: 'delete'
+  .col.s12.m12.l6
+    .hide-on-med-and-down
+      h3.flow-text.right-align
+        em = @event.date_time.strftime("%B %-d, %Y at %-l:%M %p")
+    .hide-on-large-only
+      h3.flow-text.center-align
+        em = @event.date_time.strftime("%B %-d, %Y at %-l:%M %p")
 
-p.flow-text
-  | Name:
-  = " #{@event.name}"
-  br
-
-p.flow-text
-  | Description:
-  = " #{@event.description}"
-  br
-
-p.flow-text
-  | Location:
-  = " #{@event.location}"
-  br
-
-p.flow-text
-  | Date:
-  = " #{@event.date_time.strftime("%b %-d, %Y")}"
-  br
-
-p.flow-text
-  | Time:
-  = " #{@event.date_time.strftime("%-I:%M %p")}"
-  br
-  = link_to 'Delete', event_path(@event), method: :delete
-
-iframe width='600' height='450' frameborder='0' src="https://www.google.com/maps/embed/v1/place?key=#{ENV['MAPS_KEY']}&q=#{URI.encode(@event.location)}"
-
-h3.flow-text Guests
-- if @event.invites.any?
-  table
-    tr
-      th Full Name
-      th Status
-    - @event.invites.each do |invite|
-      tr
-        td = invite.guest.full_name
-        td = invite.accepted
+.row
+  .col.s12.m12.l12.center-align
+    iframe width='600' height='450' frameborder='0' src="https://www.google.com/maps/embed/v1/place?key=#{ENV['MAPS_KEY']}&q=#{URI.encode(@event.location)}"
+.row
+  .col.s12.m12.l12
+    p.flow-text.center-align = @event.description
+.row
+  .col.s12.m12.l8.offset-l2
+    - if @event.invites.any?
+      ul.collection.with-header
+        li.collection-header
+          h3.flow-text.center-align Guests
+        - @event.invites.each do |invite|
+          li.collection-item.flow-text
+            = invite.guest.full_name
+            - if invite.accepted == 'true'
+              i.secondary-content.material-icons.green-text done
+            - elsif invite.accepted == 'false'
+              i.secondary-content.material-icons.red-text clear
+    h4.flow-texts.center-align = link_to 'Invite Guests', event_invites_path(@event), class: 'btn waves-light waves-effect blue accent-4'
