@@ -20,4 +20,6 @@ $(document).ready(function() {
     aftershow: function(){} //Function for after opening timepicker
   });
 
+  $(".button-collapse").sideNav();
+
 })
