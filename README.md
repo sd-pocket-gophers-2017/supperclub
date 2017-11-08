@@ -11,7 +11,7 @@ A rails app made to text invitations, reminders, receive confirmations, and text
 * ___Database___: PostgreSQL 0.18
 * ___Dependencies___: Puma 3.7, Devise, Twilio API, Google Maps API
 
-## Functionality
+## Features
 
 ### Create Event
 > Users can create and event using a guest list that can be editted.  The event must have a location, time, and description. 
