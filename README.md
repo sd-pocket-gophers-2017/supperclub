@@ -4,12 +4,12 @@
 A rails app made to text invitations, reminders, receive confirmations, and text location and directions automatically once an event is created. Built with :heart: in collaboration with [AlexisDeTRuyter](https://github.com/AlexisTDeRuyter) and [EmmetMahdavi](https://github.com/emmetreza).
 
 ### Details
-* Employs the MVC model.
-* Makes heavy use of ERB templating, jQuery AJAX, and Materialize.
+* Makes heavy use of slim templating, jQuery AJAX, and Materialize.
 * ___Ruby Version___: 2.3.4
 * ___Rails Version___: 5.1.3
 * ___Database___: PostgreSQL 0.18
-* ___Dependencies___: Puma 3.7, Devise, Twilio API, Google Maps API
+* ___Dependencies___: Puma 3.7, Devise, Twilio API, Google Maps API, Materialize CDN, JQuery CDN
+
 
 ## Features
 
